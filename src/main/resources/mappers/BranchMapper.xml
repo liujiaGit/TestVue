@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.testvue.mapper.BranchMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.testvue.entity.Branch">
+        <result column="branch_id" jdbcType="INTEGER" property="branchId" />
+        <result column="last_role_no" jdbcType="VARCHAR" property="lastRoleNo" />
+        <result column="last_role_name" jdbcType="VARCHAR" property="lastRoleName" />
+        <result column="branch_no" jdbcType="VARCHAR" property="branchNo" />
+        <result column="branch_name" jdbcType="VARCHAR" property="branchName" />
+        <result column="per_name" jdbcType="VARCHAR" property="perName" />
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="findAll" resultType="com.example.testvue.entity.Branch">
+        select * from branch;
+    </select>
+    <update id="updateById">
+        update branch
+        set last_role_no = #{lastRoleNo},
+            last_role_name = #{lastRoleName},
+            branch_no = #{branchNo},
+            branch_name = #{branchName},
+            per_name = #{perName}
+        where branch_id = #{branchId}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from branch where branch_id = #{branchId}
+    </delete>
+</mapper>

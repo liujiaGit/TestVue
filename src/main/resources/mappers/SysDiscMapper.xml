@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.testvue.mapper.SysDiscMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.testvue.entity.SysDisc">
+        <id column="id" property="id" />
+        <result column="disc_no" property="discNo" />
+        <result column="disc_name" property="discName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, disc_no, disc_name
+    </sql>
+    <insert id="add" parameterType="com.example.testvue.entity.SysDisc">
+        insert into sys_disc
+        (id,disc_no,disc_name)
+        values(#{id},#{discNo},#{discName})
+    </insert>
+    <update id="updateById" parameterType="java.lang.String">
+
+    </update>
+    <delete id="removeById" parameterType="java.lang.String">
+        delete sys_disc where id=#{id}
+    </delete>
+    <select id="list" resultType="com.example.testvue.entity.SysDisc">
+        select * from sys_disc
+    </select>
+
+</mapper>
