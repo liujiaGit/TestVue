@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import org.apache.commons.lang3.StringUtils;
+import com.baomidou.mybatisplus.generator.config.ConstVal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -105,7 +106,6 @@ public class CodeGenerator {
         sc.setColumnNaming(NamingStrategy.underline_to_camel);
         // 自动lombok
         sc.setEntityLombokModel(true);
-        sc.setRestControllerStyle(true);
         sc.setControllerMappingHyphenStyle(true);
         // 设置逻辑删除
         sc.setLogicDeleteFieldName("deleted");
@@ -150,6 +150,4 @@ public class CodeGenerator {
         }
         throw new MybatisPlusException("请输入正确的" + tip + "！");
     }
-
-
 }

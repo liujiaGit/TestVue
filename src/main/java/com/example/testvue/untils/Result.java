@@ -44,7 +44,7 @@ public class Result<T> {
     public static <T> Result<T> error(){
         Result<T> result=new Result<>();
         result.setCode(ResultCode.ERROR.code);
-        result.setMsg(ResultCode.ERROR.code);
+        result.setMsg(ResultCode.ERROR.msg);
         return result;
     }
 

@@ -20,9 +20,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface SysUserMapper extends BaseMapper<SysUser> {
-    int insert(SysUser sysUser);
-    int deleteById(@Param("id") Integer id);
     List<SysUser> findAll();
 
-    SysUser updateById(Integer id);
+    List<SysUser> login(SysUser sysUser);
 }

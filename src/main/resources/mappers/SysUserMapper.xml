@@ -9,17 +9,26 @@
         <result column="photo" property="photo" />
         <result column="user_name" property="userName" />
         <result column="pwd" property="pwd" />
+        <result column="token" property="token" />
         <result column="role" property="role" />
         <result column="status" property="status" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_no, photo, user_name, pwd, role, status
+        id, user_no, photo, user_name, C, role, status
     </sql>
 
     <select id="findAll" resultType="com.example.testvue.entity.SysUser">
         select * from sys_user
+    </select>
+    <select id="login" resultType="com.example.testvue.entity.SysUser"
+            parameterType="com.example.testvue.entity.SysUser">
+        select a.*,b.disc_name as role_name from sys_user a,sys_disc b
+        where
+            a.user_name=#{userName}
+          and a.pwd = #{pwd}
+          and b.disc_no = a.role
     </select>
 
     <insert id="insert" parameterType="com.example.testvue.entity.SysUser">
