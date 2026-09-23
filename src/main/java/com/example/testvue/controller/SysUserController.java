@@ -29,7 +29,7 @@ public class SysUserController {
 
 
     @ApiOperation("用户表-列表")
-    @PostMapping("/pageList")
+    @GetMapping("/pageList")
     public Result<PageInfo<SysUser>> findAll(@RequestParam(defaultValue = "1") Integer pageIndex, @RequestParam(defaultValue = "10") Integer pageSize) {
         PageHelper.startPage(pageIndex, pageSize);
         List<SysUser> list = sysUserService.findAll();

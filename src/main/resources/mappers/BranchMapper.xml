@@ -12,9 +12,16 @@
         <result column="per_name" jdbcType="VARCHAR" property="perName" />
     </resultMap>
 
-    <!--查询所有-->
+    <!--查询所有或条件查询-->
     <select id="findAll" resultType="com.example.testvue.entity.Branch">
-        select * from branch;
+        select * from branch
+            where 1=1
+        <if test="lastRoleName !='' and lastRoleName != null">
+            and last_role_name = #{lastRoleName}
+        </if>
+        <if test="perName !='' and perName != null">
+            and  per_name = #{perName}
+        </if>
     </select>
     <update id="updateById">
         update branch

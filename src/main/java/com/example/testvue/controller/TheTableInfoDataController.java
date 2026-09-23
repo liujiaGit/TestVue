@@ -30,7 +30,7 @@ public class TheTableInfoDataController {
         private TheTableInfoDataService theTableInfoDataService;
 
         @ApiOperation("-列表查询")
-        @PostMapping("/list" )
+        @GetMapping("/list" )
         public Result<List<TheTableInfoData>> list(@RequestParam(defaultValue = "1") Integer pageIndex, @RequestParam(defaultValue = "10") Integer pageSize){
             PageHelper.startPage(pageIndex,pageSize);
             List<TheTableInfoData> list= theTableInfoDataService.list();

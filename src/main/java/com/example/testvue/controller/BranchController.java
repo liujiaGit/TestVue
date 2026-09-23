@@ -21,27 +21,23 @@ public class BranchController {
     @Autowired
     private BranchService branchService;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "HELLO";
-    }
-
     @PostMapping("/pageList")
-    public Result<PageInfo<Branch>> findAll(@RequestParam(defaultValue = "1") Integer pageIndex, @RequestParam(defaultValue = "10") Integer pageSize) {
+    public Result<PageInfo<Branch>> findAll(@RequestBody Branch branch, @RequestParam(defaultValue = "1") Integer pageIndex, @RequestParam(defaultValue = "10") Integer pageSize) {
+       log.info("branch=="+branch);
         PageHelper.startPage(pageIndex,pageSize);
-        List<Branch> list= branchService.findAll();
+        List<Branch> list= branchService.findAll(branch);
         log.info("list:" + list);
         return Result.success(new PageInfo(list));
     }
 
     @ApiOperation("部门表-修改")
-    @PostMapping("/update" )
+    @PatchMapping("/update" )
     public Result<SysDisc> update(@RequestBody Branch branch){
         branchService.updateById(branch);
         return Result.ok();
     }
     @ApiOperation("部门表-删除")
-    @GetMapping("/delete" )
+    @DeleteMapping("/delete" )
     public Result<SysDisc> deleteById(@RequestParam("branchId") String branchId){
         branchService.deleteById(branchId);
         return Result.ok();

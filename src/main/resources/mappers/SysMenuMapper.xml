@@ -23,32 +23,32 @@
         insert into sys_menu
         (id,menu_id,parent_id,redirect,menu_name,path,component,icon,authority)
         values
-        (#{sysMenu.id}, #{sysMenu.menuId}, #{sysMenu.parentId}, #{sysMenu.redirect}, #{sysMenu.menuName}, #{sysMenu.path}, #{sysMenu.component}, #{sysMenu.icon}, #{sysMenu.authority})
+        (#{id}, #{menuId}, #{parentId}, #{redirect}, #{menuName}, #{path}, #{component}, #{icon}, #{authority})
     </insert>
     <update id="updateById">
         update sys_menu set
-            <if test="sysMenu.parentId !='' and sysMenu.parentId != null">
-                parent_id = sysMenu.parentId
+            <if test="parentId !='' and parentId != null">
+                parent_id = #{parentId}
             </if>
-        <if test="sysMenu.redirect !='' and sysMenu.redirect != null">
-            redirect = sysMenu.redirect
+        <if test="redirect !='' and redirect != null">
+            redirect = #{redirect}
         </if>
-        <if test="sysMenu.menuName !='' and sysMenu.menuName != null">
-            menu_name = sysMenu.menuName
+        <if test="menuName !='' and menuName != null">
+            menu_name = #{menuName}
         </if>
-        <if test="sysMenu.path !='' and sysMenu.path != null">
-            path = sysMenu.path
+        <if test="path !='' and path != null">
+            path = #{path}
         </if>
-        <if test="sysMenu.component !='' and sysMenu.component != null">
-            component = sysMenu.component
+        <if test="component !='' and component != null">
+            component = #{component}
         </if>
-        <if test="sysMenu.icon !='' and sysMenu.icon != null">
-            icon = sMenu.icon
+        <if test="icon !='' and icon != null">
+            icon = #{sMenu.icon}
         </if>
-        <if test="sysMenu.authority !='' and sysMenu.authority != null">
-            authority = sysMenu.authority
+        <if test="authority !='' and authority != null">
+            authority = #{authority}
         </if>
-        where id=#{sysMenu.id}
+        where id=#{id}
     </update>
     <select id="list" resultType="com.example.testvue.entity.SysMenu">
         select * from sys_menu

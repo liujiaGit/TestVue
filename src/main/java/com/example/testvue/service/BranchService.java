@@ -12,8 +12,8 @@ public class BranchService  {
     @Autowired
     private BranchMapper branchMapper;
 
-    public List<Branch> findAll() {
-        return branchMapper.findAll();
+    public List<Branch> findAll(Branch branch) {
+        return branchMapper.findAll(branch);
     }
 
     public int updateById(Branch branch) {
@@ -23,4 +23,5 @@ public class BranchService  {
     public int deleteById(String branchId) {
         return branchMapper.deleteById(branchId);
     }
+
 }

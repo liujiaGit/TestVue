@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface BranchMapper extends BaseMapper<Branch> {
-    List<Branch> findAll();
-
+    List<Branch> findAll(Branch branch);
     int updateById(Branch branch);
     int deleteById(String branchId);
+
 }
