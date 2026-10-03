@@ -6,6 +6,8 @@ import com.example.testvue.untils.Result;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +29,11 @@ public class SysUserService {
         return sysUserMapper.findAll();
     }
 
-    public List<SysUser> login(SysUser sysUser) {
+    public List<SysUser> login(@RequestBody SysUser sysUser) {
         
         return sysUserMapper.login(sysUser);
+    }
+    public int updateByUserNo(@RequestBody SysUser sysUser){
+        return sysUserMapper.updateByUserNo(sysUser);
     }
 }

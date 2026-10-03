@@ -44,6 +44,13 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value = "密码")
     private String pwd;
 
+    @ApiModelProperty(value = "性别")
+    private String sex;
+    @ApiModelProperty(value = "电话")
+    private String phone;
+    @ApiModelProperty(value = "email")
+    private String email;
+
     @ApiModelProperty(value = "登录密钥")
     private String token;
 

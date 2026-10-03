@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -23,4 +25,5 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     List<SysUser> findAll();
 
     List<SysUser> login(SysUser sysUser);
+    int updateByUserNo(@RequestBody SysUser sysUser);
 }

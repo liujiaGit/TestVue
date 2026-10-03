@@ -9,6 +9,9 @@
         <result column="photo" property="photo" />
         <result column="user_name" property="userName" />
         <result column="pwd" property="pwd" />
+        <result column="sex" property="sex" />
+        <result column="phone" property="phone" />
+        <result column="email" property="email" />
         <result column="token" property="token" />
         <result column="role" property="role" />
         <result column="status" property="status" />
@@ -35,31 +38,31 @@
         insert into sys_user
         (user_no,photo,user_name,pwd,role,status)
         values
-        (#{userNo},#{photo}, #{userName}, #{pwd}, #{role}, #{status})
+        (#{userNo},#{photo}, #{userName}, #{pwd},#{sex},#{phone},#{email}, #{role}, #{status})
     </insert>
     <delete id="deleteById" parameterType="com.example.testvue.entity.SysUser">
         delete from sys_user where id = #{id}
     </delete>
 
-    <update id="updateById" parameterType="java.lang.Integer">
-        update sys_user set
-        <if test="userNo !='' and userNo !=null ">
-            user_no = #{userNo}
-        </if>
-        <if test="photo !='' and photo !=null ">
-            photo = #{photo}
-        </if>
-        <if test="userName !='' and userName !=null ">
-            user_name = #{userName}
-        </if>
-        <if test="pwd !='' and pwd !=null ">
-            pwd = #{pwd}
-        </if>
-        <if test="role !='' and role !=null ">
-            role = #{role}
-        </if>
-        <if test="status !='' and status !=null ">
-            status = #{status}
-        </if>
+    <update id="updateByUserNo" parameterType="com.example.testvue.entity.SysUser">
+        update sys_user
+            <set>
+                <if test="photo !='' and photo !=null ">
+                    photo = #{photo},
+                </if>
+                <if test="userName !='' and userName !=null ">
+                    user_name = #{userName},
+                </if>
+                <if test="pwd !='' and pwd !=null ">
+                    pwd = #{pwd},
+                </if>
+                <if test="role !='' and role !=null ">
+                    role = #{role},
+                </if>
+                <if test="status !='' and status !=null ">
+                    status = #{status},
+                </if>
+            </set>
+            where user_no = #{userNo}
     </update>
 </mapper>

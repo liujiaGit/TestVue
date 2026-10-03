@@ -48,4 +48,15 @@ public class SysUserController {
             return Result.error(ResultCode.USER_ACCOUNT_ERROR.code,ResultCode.USER_ACCOUNT_ERROR.msg);
         }
     }
+    @ApiOperation("用户表-修改个人信息")
+    @PostMapping("/updateByUserNo")
+    public Result<Integer> updateByUserNo(@RequestBody SysUser sysUser){
+        log.info("修改个人信息参数" + sysUser);
+        int a = sysUserService.updateByUserNo(sysUser);
+        if(a>0){
+            return Result.success(a);
+        }else{
+            return Result.error();
+        }
+    }
 }
